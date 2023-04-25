@@ -1,0 +1,18 @@
+@import 'variables';
+@import '../../node_modules/bootstrap/scss/bootstrap';
+@import '../../node_modules/bootstrap/scss/functions';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap');
+
+body {
+  background-color: $primary;
+}
+
+//Navbar
+nav {
+  box-shadow: 0 0 2px 0 white;
+}
+
+h1 {
+  color: white;
+  font-family: $font-family;
+}
