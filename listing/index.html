@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="dist/css/styles.css" />
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../dist/css/styles.css" />
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
       integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
@@ -14,14 +14,14 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
       integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
       crossorigin="anonymous"></script>
-    <script src="/src/js/global.js" defer></script>
-    <title>Auction Site</title>
+    <script src="../src/js/global.js" defer></script>
+    <title>Specific listing name should be here</title>
   </head>
   <body>
     <header>
       <nav class="navbar navbar-expand-lg bg-body-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="../index.html">
             <img
               src="/src/assets/gavel-g56064e8eb_1280.svg"
               alt="Logo of a acution gavel"
@@ -41,7 +41,7 @@
           <div class="collapse navbar-collapse p-2" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link text-dark active" href="/index.html">Home</a>
+                <a class="nav-link text-dark" href="../index.html">Home</a>
               </li>
               <li class="nav-item">
                 <button
@@ -52,7 +52,7 @@
                 </button>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-dark" href="/profile/index.html">View Profile</a>
+                <a class="nav-link text-dark" href="../profile/index.html">View Profile</a>
               </li>
               <hr class="table-group-divider" />
               <li class="nav-item">
@@ -76,21 +76,25 @@
         </div>
       </nav>
     </header>
-
-    <!-- Main content-->
     <main>
-      <section>
-        <div class="container">
-          <div class="row">
-            <h1 class="text-center mt-5 text-light">Auction Listing's</h1>
-            <form class="d-flex mt-5" role="search">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search" />
-              <button class="btn btn-outline-light" type="submit">Search</button>
-            </form>
+      <section class="container">
+        <div class="col">
+          <div class="" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a class="link-offset-3 text-light" href="../index.html">> Back</a>
+              </li>
+            </ol>
+          </div>
+          <div id="profileContainer" class="text-white d-flex flex-row">
+            <div class="mt-5 d-flex profile-thumb">
+              <img
+                id="profileAvatar"
+                alt="Generic placeholder image"
+                class="img-fluid img-thumbnail mt-4 mb-2 profileAvatar"
+                style="width: 100px; z-index: 10" />
+              <h2 class="text-light mt-5 ms-2" id="profileName">Profile Name</h2>
+            </div>
           </div>
         </div>
       </section>
@@ -113,6 +117,26 @@
                     <small class="text-body-secondary">10 days left</small>
                   </p>
                 </div>
+              </div>
+              <div class="mt-5">
+                <h2 class="text-light">Details</h2>
+                <hr class="table-group-divider link-light" />
+                <div class="d-flex justify-content-between text-light">
+                  <h4>Highest Bid: <span class="highestBid">100</span></h4>
+                  <h4>Placed By: <span class="highestBidBy">Benji</span></h4>
+                </div>
+                <div class="d-flex justify-content-between text-light">
+                  <h4>Days left: <span class="listingDate">0</span></h4>
+                  <h4>Bids: <span id="bidsAmount">0</span></h4>
+                </div>
+                <form class="d-flex mt-3">
+                  <input
+                    class="form-control me-2"
+                    placeholder="Enter Amount"
+                    type="number"
+                    aria-label="enterAmount" />
+                  <button class="btn btn-outline-light" type="submit">Enter</button>
+                </form>
               </div>
             </div>
           </div>
