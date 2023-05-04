@@ -14,13 +14,13 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
       integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
       crossorigin="anonymous"></script>
-    <script src="../src/js/global.js" defer></script>
+    <script src="../src/js/global.mjs" type="module" defer></script>
     <title>Profile Name should be here</title>
   </head>
-  <body>
+  <body class="bg-primary">
     <header>
       <nav class="navbar navbar-expand-lg bg-body-light">
-        <div class="container-fluid">
+        <div class="container-xl">
           <a class="navbar-brand" href="../index.html">
             <img
               src="/src/assets/gavel-g56064e8eb_1280.svg"
@@ -38,26 +38,26 @@
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse p-2" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link text-dark" href="../index.html">Home</a>
+                <a class="nav-link" href="../index.html">Home</a>
               </li>
               <li class="nav-item">
                 <button
-                  class="nav-link d-flex align-items-center text-dark border-0 bg-transparent"
+                  class="nav-link d-flex align-items-center border-0 bg-transparent"
                   data-bs-toggle="modal"
                   data-bs-target="#login-modal">
                   Login
                 </button>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-dark active">View Profile</a>
+                <a class="nav-link active">View Profile</a>
               </li>
               <hr class="table-group-divider" />
               <li class="nav-item">
                 <button
-                  class="nav-link d-flex align-items-center text-dark border-0 bg-transparent"
+                  class="nav-link d-flex align-items-center border-0 bg-transparent"
                   data-bs-toggle="modal"
                   data-bs-target="#create-listing">
                   Create Listing
@@ -65,7 +65,7 @@
               </li>
               <li class="nav-item">
                 <button
-                  class="nav-link d-flex align-items-center text-dark border-0 bg-transparent"
+                  class="nav-link d-flex align-items-center border-0 bg-transparent"
                   data-bs-toggle="modal"
                   data-bs-target="#edit-profile">
                   Edit Profile
@@ -76,7 +76,7 @@
         </div>
       </nav>
     </header>
-    <main>
+    <main class="container-xl">
       <section class="container">
         <div class="col">
           <div id="profileContainer" class="text-white d-flex flex-row">
@@ -138,7 +138,7 @@
     </main>
     <!-- Footer -->
     <footer class="text-center text-lg-start mt-5">
-      <div class="text-center p-3 footer-shadow">
+      <div class="text-center p-3">
         <h4 class="text-light">Copyright© Auction site</h4>
       </div>
     </footer>
@@ -151,61 +151,65 @@
       aria-labelledby="exampleModalLabel"
       aria-hidden="true">
       <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Create Listing</h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"></button>
+        <form id="listingForm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Create Listing</h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="floatingTitle"
+                  placeholder="Title"
+                  name="title"
+                  required />
+                <label for="floatingTitle"></label>
+              </div>
+              <div>
+                <input
+                  type="url"
+                  class="form-control"
+                  id="floatingMedia"
+                  placeholder="Media Gallery"
+                  name="media" />
+                <label for="floatingMedia"></label>
+              </div>
+              <div>
+                <textarea
+                  type="text"
+                  class="form-control"
+                  id="floatingDescription"
+                  placeholder="Description"
+                  name="description"
+                  rows="5"></textarea>
+                <label for="floatingDescription"></label>
+              </div>
+              <div>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="floatingDate"
+                  placeholder="Date"
+                  name="date"
+                  required />
+                <label for="floatingDate"></label>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">
+                Close
+              </button>
+              <button type="button" class="btn btn-dark">Publish Listing</button>
+            </div>
           </div>
-          <div class="modal-body">
-            <div>
-              <input
-                type="text"
-                class="form-control"
-                id="floatingTitle"
-                placeholder="Title"
-                name="title" />
-              <label for="floatingTitle"></label>
-            </div>
-            <div>
-              <input
-                type="url"
-                class="form-control"
-                id="floatingMedia"
-                placeholder="Media Gallery"
-                name="media" />
-              <label for="floatingMedia"></label>
-            </div>
-            <div>
-              <textarea
-                type="text"
-                class="form-control"
-                id="floatingDescription"
-                placeholder="Description"
-                name="description"
-                rows="5"></textarea>
-              <label for="floatingDescription"></label>
-            </div>
-            <div>
-              <input
-                type="date"
-                class="form-control"
-                id="floatingDate"
-                placeholder="Date"
-                name="date" />
-              <label for="floatingDate"></label>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">
-              Close
-            </button>
-            <button type="button" class="btn btn-dark">Publish Listing</button>
-          </div>
-        </div>
+        </form>
       </div>
     </div>
 
@@ -217,54 +221,56 @@
       aria-labelledby="exampleModalLabel"
       aria-hidden="true">
       <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Profile</h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div>
-              <input
-                type="email"
-                class="form-control"
-                id="disabledEmail"
-                placeholder="Email"
-                name="email"
-                disabled />
-              <label for="disabledEmail"></label>
+        <form id="editForm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Profile</h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"></button>
             </div>
-            <div>
-              <input
-                type="text"
-                class="form-control"
-                id="floatingUsername"
-                placeholder="Username"
-                name="username"
-                disabled />
-              <label for="floatingUsername"></label>
+            <div class="modal-body">
+              <div>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="disabledEmail"
+                  placeholder="Email"
+                  name="email"
+                  disabled />
+                <label for="disabledEmail"></label>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="floatingUsername"
+                  placeholder="Username"
+                  name="username"
+                  disabled />
+                <label for="floatingUsername"></label>
+              </div>
+              <div>
+                <input
+                  type="url"
+                  class="form-control"
+                  id="editAvatar"
+                  name="avatar"
+                  placeholder="Avatar"
+                  required />
+                <label for="editAvatar"><small>https://url.com/image.jpg</small></label>
+              </div>
             </div>
-            <div>
-              <input
-                type="url"
-                class="form-control"
-                id="editAvatar"
-                name="avatar"
-                placeholder="Avatar"
-                required />
-              <label for="editAvatar"><small>https://url.com/image.jpg</small></label>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">
+                Close
+              </button>
+              <button type="button" class="btn btn-dark">Save Changes</button>
             </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">
-              Close
-            </button>
-            <button type="button" class="btn btn-dark">Save Changes</button>
-          </div>
-        </div>
+        </form>
       </div>
     </div>
 
@@ -276,48 +282,50 @@
       aria-labelledby="exampleModalLabel"
       aria-hidden="true">
       <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="mt-4">
-              <input
-                type="email"
-                class="form-control"
-                id="loginEmail"
-                placeholder="Email"
-                name="email" />
-              <label for="loginEmail"><small>Must be a valid @stud.noroff email</small></label>
+        <form id="loginForm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"></button>
             </div>
-            <div class="mt-4">
-              <input
-                type="password"
-                class="form-control"
-                id="loginPassword"
-                placeholder="Password"
-                name="password" />
-              <label for="loginPassword">
-                <small>Password must be atleast 8 characters</small></label
-              >
+            <div class="modal-body">
+              <div class="mt-4">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="loginEmail"
+                  placeholder="Email"
+                  name="email" />
+                <label for="loginEmail"><small>Must be a valid @stud.noroff email</small></label>
+              </div>
+              <div class="mt-4">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="loginPassword"
+                  placeholder="Password"
+                  name="password" />
+                <label for="loginPassword">
+                  <small>Password must be atleast 8 characters</small></label
+                >
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                class="btn btn-outline-dark"
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#signup-modal">
+                Register
+              </button>
+              <button type="button" class="btn btn-dark">Login</button>
             </div>
           </div>
-          <div class="modal-footer">
-            <button
-              class="btn btn-outline-dark"
-              type="button"
-              data-bs-toggle="modal"
-              data-bs-target="#signup-modal">
-              Register
-            </button>
-            <button type="button" class="btn btn-dark">Login</button>
-          </div>
-        </div>
+        </form>
       </div>
     </div>
 
@@ -329,74 +337,77 @@
       aria-labelledby="exampleModalLabel"
       aria-hidden="true">
       <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Register</h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"></button>
+        <form id="registerForm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Register</h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="mt-4">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="registerName"
+                  placeholder="Name"
+                  name="name"
+                  required />
+                <label for="registerName"
+                  ><small class="text-body-secondary"
+                    >No punctuation symbols apart from(_)</small
+                  ></label
+                >
+              </div>
+              <div class="mt-4">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="registerEmail"
+                  placeholder="Email"
+                  name="email" />
+                <label for="registerEmail"
+                  ><small class="text-body-secondary"
+                    >Must be a valid @stud.noroff email</small
+                  ></label
+                >
+              </div>
+              <div class="mt-4">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="registerPassword"
+                  placeholder="Password"
+                  name="password" />
+                <label for="registerPassword"
+                  ><small class="text-body-secondary"
+                    >Password must be atleast 8 characters</small
+                  ></label
+                >
+              </div>
+              <div class="mt-4">
+                <input
+                  type="url"
+                  class="form-control"
+                  id="registerAvatar"
+                  placeholder="Avatar"
+                  name="avatar" />
+                <label for="registerAvatar"
+                  ><small class="text-body-secondary">Optional</small></label
+                >
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">
+                Close
+              </button>
+              <button type="button" class="btn btn-dark">Register</button>
+            </div>
           </div>
-          <div class="modal-body">
-            <div class="mt-4">
-              <input
-                type="text"
-                class="form-control"
-                id="registerName"
-                placeholder="Name"
-                name="name" />
-              <label for="registerName"
-                ><small class="text-body-secondary"
-                  >No punctuation symbols apart from(_)</small
-                ></label
-              >
-            </div>
-            <div class="mt-4">
-              <input
-                type="email"
-                class="form-control"
-                id="registerEmail"
-                placeholder="Email"
-                name="email" />
-              <label for="registerEmail"
-                ><small class="text-body-secondary"
-                  >Must be a valid @stud.noroff email</small
-                ></label
-              >
-            </div>
-            <div class="mt-4">
-              <input
-                type="password"
-                class="form-control"
-                id="registerPassword"
-                placeholder="Password"
-                name="password" />
-              <label for="registerPassword"
-                ><small class="text-body-secondary"
-                  >Password must be atleast 8 characters</small
-                ></label
-              >
-            </div>
-            <div class="mt-4">
-              <input
-                type="url"
-                class="form-control"
-                id="registerAvatar"
-                placeholder="Avatar"
-                name="avatar" />
-              <label for="registerAvatar"
-                ><small class="text-body-secondary">Optional</small></label
-              >
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">
-              Close
-            </button>
-            <button type="button" class="btn btn-dark">Register</button>
-          </div>
-        </div>
+        </form>
       </div>
     </div>
   </body>
