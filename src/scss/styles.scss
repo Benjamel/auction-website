@@ -4,13 +4,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap');
 
 body {
-  background-color: $primary;
   font-family: $font-family;
 }
 
 // Navbar
 nav {
-  box-shadow: 0 0 2px 0 white;
+  box-shadow: 0 0 2px 0 $whiteColor;
 
   .navbar-toggler-icon {
     background-image: url(/src/assets/download.svg);
@@ -25,7 +24,6 @@ nav {
   }
 
   .navbar-collapse {
-    background-color: white;
     border-radius: 5px;
   }
 
@@ -33,8 +31,19 @@ nav {
     border: none;
   }
 
-  .active {
+  .navbar-nav .show > .nav-link,
+  .navbar-nav .nav-link.active {
+    color: $whiteColor;
     text-decoration: underline;
+  }
+
+  .navbar-nav .nav-link:hover,
+  .navbar-nav .nav-link:focus {
+    color: $whiteColor;
+  }
+
+  .nav-link {
+    color: $whiteColor;
   }
 }
 
@@ -42,6 +51,12 @@ nav {
 ::placeholder {
   color: black;
   opacity: 1;
+}
+
+.card img {
+  background-position: center;
+  object-fit: center;
+  aspect-ratio: 16 / 9;
 }
 
 // Text
@@ -66,5 +81,28 @@ h4 {
 
 // Footer
 footer {
-  box-shadow: 0 0 2px 0 white;
+  box-shadow: 0 0 2px 0 $whiteColor;
+}
+
+@media screen and (max-width: 991px) {
+  nav {
+    .navbar-collapse {
+      background-color: $whiteColor;
+      padding: 10px;
+    }
+
+    .navbar-nav .show > .nav-link,
+    .navbar-nav .nav-link.active {
+      color: black;
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link:focus {
+      color: black;
+    }
+
+    .nav-link {
+      color: black;
+    }
+  }
 }
