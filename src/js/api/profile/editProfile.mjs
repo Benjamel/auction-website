@@ -1,22 +1,44 @@
-import { API_BASE_URL } from '../constants.mjs';
-import { authFetch } from '../headers.mjs';
+import { API_URL } from '../constants.mjs';
+import { save } from '../storage/index.mjs';
+import { authFetch, headers } from '../headers.mjs';
 
 const method = 'PUT';
-const action = '/auction/profiles/';
+const action = 'profiles/';
 
-export async function editProfile(profileData) {
-  if (!profileData.name) {
-    throw new Error('Edit requires a name');
-  }
-
-  const editProfileURL = `${API_BASE_URL + action + profileData.name}/media`;
-
-  const response = await authFetch(editProfileURL, {
+export async function editProfile(media, name) {
+  const options = {
     method,
-    body: JSON.stringify(profileData),
-  });
+    headers: headers(),
+    body: JSON.stringify({
+      avatar: media,
+    }),
+  };
 
-  console.log(response);
-
-  return await response.json();
+  try {
+    const response = await authFetch(`${API_URL}${action}${name}/media`, options);
+    const result = await response.json();
+    if (response.ok) {
+    }
+    const { accessToken, credits, ...profile } = result;
+    save('profile', profile);
+  } catch (error) {
+    console.log(error);
+  }
 }
+
+// export async function editProfile(profileData) {
+//   if (!profileData.name) {
+//     throw new Error('Edit requires a name');
+//   }
+
+//   const editProfileURL = `${API_URL}${action}${profileData.name}/media`;
+
+//   const response = await authFetch(editProfileURL, {
+//     method,
+//     body: JSON.stringify(profileData),
+//   });
+
+//   console.log(response);
+
+//   return await response.json();
+// }
