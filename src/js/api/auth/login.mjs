@@ -1,41 +1,71 @@
-import * as constants from '../constants.mjs';
-import { headers } from '../headers.mjs';
-import { save } from '../storage/index.mjs';
+import { API_URL } from '../constants.mjs';
+import * as storage from '../storage/index.mjs';
 
 const method = 'POST';
-const action = '/auth/login';
+const action = 'auth/login';
 
-export async function loginFormListener() {
-  const form = document.querySelector('#loginForm');
+export async function loginFormListener(profile) {
+  const loginUrl = API_URL + action;
+  const body = JSON.stringify(profile);
 
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    const email = form.email.value;
-    const password = form.password.value;
-
-    try {
-      const response = await fetch(`${constants.API_BASE_URL + action}`, {
-        method,
-        headers: headers('application/json'),
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (response.ok) {
-        const profile = await response.json();
-        save('token', profile.accessToken);
-        delete profile.accessToken;
-        save('profile', profile);
-
-        console.log(response);
-        // Does the user have to be redireted anywhere after being logged in?
-        return profile;
-      } else {
-        alert(data.message);
-      }
-    } catch (error) {
-      console.error(error);
-      throw new Error('Error loggin in.');
-    }
+  const response = await fetch(loginUrl, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method,
+    body,
   });
+
+  const { accessToken, ...user } = await response.json();
+
+  storage.save('accessToken', accessToken);
+  delete profile.accessToken;
+  storage.save('profile', user);
+
+  if (response.ok) {
+    window.location.href = '/index.html';
+  } else {
+    alert('Wrong login information!');
+    throw new Error(data.message);
+  }
 }
+
+// export async function loginFormListener() {
+//   const form = document.querySelector('#loginForm');
+
+//   form.addEventListener('submit', async (event) => {
+//     event.preventDefault();
+
+//     const email = form.email.value;
+//     const password = form.password.value;
+
+//     try {
+//       const response = await fetch(`${API_URL}${action}`, {
+//         method,
+//         headers: {
+//           'Content-Type': 'application/json; charset=UTF-8',
+//         },
+//         body: JSON.stringify({ email, password }),
+//       });
+//       const result = await response.json();
+//       console.log(result);
+//       if (response.ok) {
+//         const { accessToken, credits, ...profile } = result;
+//         save('accessToken', accessToken);
+//         save('credits', credits);
+//         save('profile', profile);
+
+//         console.log('accessToken', accessToken);
+//
+
+//         return profile;
+//       } else {
+//         alert(data.message);
+//       }
+//     } catch (error) {
+//       console.error(error);
+//       alert('Wrong password or username');
+//       throw new Error('Error loggin in.');
+//     }
+//   });
+// }
