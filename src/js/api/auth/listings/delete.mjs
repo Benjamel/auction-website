@@ -4,7 +4,7 @@ import { authFetch } from '../../headers.mjs';
 const action = 'listings/';
 const method = 'delete';
 
-export async function updateList(id) {
+export async function removeList(id) {
   if (!id) {
     throw new Error('Delete requires postID');
   }

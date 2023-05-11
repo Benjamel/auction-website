@@ -4,7 +4,7 @@ import { authFetch } from '../../headers.mjs';
 const action = 'listings/';
 const method = 'PUT';
 
-export async function removeList(postData) {
+export async function updateList(postData) {
   if (!postData.id) {
     throw new Error('Update requires postID');
   }

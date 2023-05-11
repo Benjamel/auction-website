@@ -25,20 +25,3 @@ export async function editProfile(media, name) {
     console.log(error);
   }
 }
-
-// export async function editProfile(profileData) {
-//   if (!profileData.name) {
-//     throw new Error('Edit requires a name');
-//   }
-
-//   const editProfileURL = `${API_URL}${action}${profileData.name}/media`;
-
-//   const response = await authFetch(editProfileURL, {
-//     method,
-//     body: JSON.stringify(profileData),
-//   });
-
-//   console.log(response);
-
-//   return await response.json();
-// }

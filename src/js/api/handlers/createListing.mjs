@@ -1,16 +1,28 @@
-import { createList } from '../auth/listings/create.mjs';
+import { createList } from '../auth/listings/index.mjs';
 
-export function createListFormListener() {
-  const form = document.querySelector('#listingForm');
+export function createFormListener() {
+  const listingForm = document.querySelector('#listingForm');
+  listingForm.addEventListener('submit', handleListingForm);
+}
 
-  if (form) {
-    form.addEventListener('submit', (event) => {
-      const form = event.target;
-      const formData = new FormData(form);
-      const post = Object.fromEntries(formData.entries());
+async function handleListingForm(event) {
+  event.preventDefault();
 
-      createList(post);
-      console.log(post);
-    });
+  const titleInput = document.querySelector('#createTitle');
+  const descriptionInput = document.querySelector('#createDescription');
+  const mediaInput = document.querySelector('#createMedia');
+  const dateInput = document.querySelector('#createDate');
+
+  const newListing = {
+    title: titleInput.value,
+    description: descriptionInput.value,
+    media: mediaInput.value ? [mediaInput.value] : [],
+    endsAt: new Date(dateInput.value),
+  };
+
+  const listingId = await createList(newListing);
+
+  if (listingId) {
+    window.location.href = `/listing/index.html?id=${listingId}`;
   }
 }
