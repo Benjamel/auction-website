@@ -39,5 +39,5 @@ export async function renderListings() {
 }
 
 function navigateToListing(listingId) {
-  window.location.href = `./listing/index.html?id=${listingId}`;
+  window.location.href = `/listing/index.html?id=${listingId}`;
 }

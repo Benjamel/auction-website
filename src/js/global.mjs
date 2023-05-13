@@ -5,9 +5,8 @@ import { createFormListener } from './api/handlers/createListing.mjs';
 import { renderSingleListing } from './api/handlers/renderListing.mjs';
 import * as templates from './templates/index.mjs';
 import { bidFormListener } from './api/handlers/placeBid.mjs';
-// import { setEditProfile } from './api/handlers/editProfile.mjs';
-// import { postTemplate } from './templates/listings.mjs';
-// import { fetchProfile } from './templates/profile.mjs';
+import { editProfileFormListener } from './api/handlers/editProfile.mjs';
+import { handleProfilePageLoad } from './templates/index.mjs';
 
 const path = location.pathname;
 
@@ -18,11 +17,13 @@ switch (path) {
     logoutFormListener();
     templates.renderListings();
     createFormListener();
+    editProfileFormListener();
     break;
   case '/profile/index.html':
     logoutFormListener();
-    templates.renderListings();
     createFormListener();
+    editProfileFormListener();
+    handleProfilePageLoad();
     break;
   case '/listing/index.html':
     setLogin();
@@ -31,5 +32,6 @@ switch (path) {
     renderSingleListing();
     bidFormListener();
     createFormListener();
+    editProfileFormListener();
     break;
 }
