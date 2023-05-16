@@ -87,7 +87,7 @@
         </div>
       </nav>
     </header>
-    <main class="container-xl">
+    <main class="container-lg">
       <section class="container">
         <div class="col" id="profileContainer">
           <div class="text-white d-flex flex-row">
@@ -117,37 +117,39 @@
           </div>
           <div class="mt-5">
             <h2 class="text-light">Details</h2>
-            <h3 class="text-light" id="detailsEmail">@stud.noroff.no</h3>
+            <h3 class="text-light" id="detailsEmail"></h3>
             <div class="d-flex justify-content-between">
               <div class="text-light">
-                <h4>Credits: <span id="amountCredits">0</span></h4>
+                <h4>Credits: <span id="amountCredits"></span></h4>
               </div>
               <div class="text-light">
-                <h4>Listings: <span id="amountListings">0</span></h4>
+                <h4>Listings: <span id="amountListings"></span></h4>
+                <h4>wins: <span id="totalWins"></span></h4>
               </div>
             </div>
           </div>
-          <div>
-            <div class="card mt-5">
-              <img
-                src="/src/assets/pexels-fox-13189272.jpg"
-                class="card-img-top listingImage"
-                alt="Listing image" />
-              <div class="card-body">
-                <h5 class="card-title listingTitle">PS5</h5>
-                <p class="card-text listingDescription">
-                  Only used a couple of times over the time since I bought it 4 weeks ago. It's in
-                  perfect condition.
-                </p>
-                <p class="card-text listingDate">
-                  <small class="text-body-secondary">10 days left</small>
-                </p>
-              </div>
-            </div>
-          </div>
+          <div class="row d-flex justify-content-center" id="listingContainer"></div>
         </div>
       </section>
     </main>
+    <!-- Templates -->
+    <template id="listingCards">
+      <div class="col-lg-4 col-md-4 col-sm-6 col-12 mt-4">
+        <a href="#" id="cardLink" class="card-container text-decoration-none">
+          <div class="card">
+            <img src="" class="card-img-top" id="listingImage" alt="Listing image" />
+            <div class="card-body">
+              <h5 class="card-title" id="listingTitle"></h5>
+              <p class="card-text" id="listingDescription"></p>
+              <p class="card-text" id="listingDate">
+                <small class="text-body-secondary"></small>
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </template>
+
     <!-- Footer -->
     <footer class="text-center text-lg-start mt-5">
       <div class="text-center p-3">
@@ -255,11 +257,11 @@
                   disabled />
               </div>
               <div class="mt-3">
-                <label for="floatingUsername">Username</label>
+                <label for="disabledUsername">Username</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="floatingUsername"
+                  id="disabledUsername"
                   placeholder="Name"
                   name="name"
                   disabled />
