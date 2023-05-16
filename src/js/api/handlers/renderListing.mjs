@@ -13,8 +13,6 @@ export async function renderSingleListing() {
     _count: { bids: bidsAmount },
     description,
     bids,
-    id,
-    tags,
     endsAt,
   } = listing;
 

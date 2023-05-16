@@ -8,12 +8,17 @@ async function renderProfile(profile) {
   const creditsElement = document.querySelector('#amountCredits');
   const avatarElement = document.querySelector('#profileAvatar');
   const listingsElement = document.querySelector('#amountListings');
+  const totalWins = document.querySelector('#totalWins');
 
   nameElement.textContent = profile.name;
   emailElement.textContent = profile.email;
   creditsElement.textContent = profile.credits;
   avatarElement.src = profile.avatar;
   listingsElement.textContent = profile._count.listings;
+  document.title = 'Profile | ' + profile.name;
+
+  const winsCount = profile.wins.length;
+  totalWins.textContent = winsCount.toString();
 
   const activeListings = await getProfileListings(profile.name);
   if (activeListings) {

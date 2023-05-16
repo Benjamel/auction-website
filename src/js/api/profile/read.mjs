@@ -10,7 +10,6 @@ export async function getProfile(name) {
     const response = await authFetch(getProfileURL);
     if (response.ok) {
       const responseBody = await response.json();
-      console.log(responseBody);
 
       return responseBody;
     } else {
@@ -29,7 +28,6 @@ export async function getProfileListings(name) {
     const response = await authFetch(getProfileURL);
     if (response.ok) {
       const responseBody = await response.json();
-      console.log(responseBody);
 
       return responseBody;
     } else {

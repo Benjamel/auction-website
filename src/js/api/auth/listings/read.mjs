@@ -7,7 +7,6 @@ export async function getListings() {
   const updateListsUrl = `${API_URL}${action}?_active=true&sort=created&sortOrder=desc`;
 
   const response = await authFetch(updateListsUrl);
-  // console.log(response);
 
   return await response.json();
 }

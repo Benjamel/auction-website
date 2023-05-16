@@ -7,6 +7,8 @@ import * as templates from './templates/index.mjs';
 import { bidFormListener } from './api/handlers/placeBid.mjs';
 import { editProfileFormListener } from './api/handlers/editProfile.mjs';
 import { handleProfilePageLoad } from './templates/index.mjs';
+import { handleVisibility } from './api/handlers/loggedIn.mjs';
+import { searchForm } from './api/handlers/search.mjs';
 
 const path = location.pathname;
 
@@ -18,12 +20,15 @@ switch (path) {
     templates.renderListings();
     createFormListener();
     editProfileFormListener();
+    handleVisibility();
+    searchForm();
     break;
   case '/profile/index.html':
     logoutFormListener();
     createFormListener();
     editProfileFormListener();
     handleProfilePageLoad();
+    handleVisibility();
     break;
   case '/listing/index.html':
     setLogin();
@@ -33,5 +38,6 @@ switch (path) {
     bidFormListener();
     createFormListener();
     editProfileFormListener();
+    handleVisibility();
     break;
 }
