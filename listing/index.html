@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../dist/css/styles.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+      integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+      integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
+      crossorigin="anonymous"></script>
+    <script src="../src/js/global.mjs" defer type="module"></script>
+    <title>Specific listing name should be here</title>
+  </head>
+  <body class="bg-primary">
+    <header>
+      <nav class="navbar navbar-expand-lg bg-body-light">
+        <div class="container-xl">
+          <a class="navbar-brand" href="../index.html">
+            <img
+              src="/src/assets/gavel-g56064e8eb_1280.svg"
+              alt="Logo of a acution gavel"
+              id="logo"
+              class="d-inline-block align-text-top" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="../index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <button
+                  type="button"
+                  id="loginBtn"
+                  class="nav-link d-flex align-items-center border-0 bg-transparent"
+                  data-bs-toggle="modal"
+                  data-bs-target="#login-modal">
+                  Login
+                </button>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="profileBtn" href="../profile/index.html">View Profile</a>
+              </li>
+              <li class="nav-item">
+                <button
+                  type="button"
+                  class="nav-link d-flex align-items-center border-0 bg-transparent"
+                  id="logoutBtn">
+                  Logout
+                </button>
+              </li>
+              <hr class="table-group-divider" />
+              <li class="nav-item">
+                <button
+                  type="button"
+                  class="nav-link d-flex align-items-center border-0 bg-transparent"
+                  data-bs-toggle="modal"
+                  data-bs-target="#create-listing">
+                  Create Listing
+                </button>
+              </li>
+              <li class="nav-item">
+                <button
+                  type="button"
+                  class="nav-link d-flex align-items-center border-0 bg-transparent"
+                  data-bs-toggle="modal"
+                  data-bs-target="#edit-profile">
+                  Edit Profile
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="container-lg">
+      <section class="container" id="singleList">
+        <div class="mt-1" aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a class="text-light opacity-75" href="/index.html">>Home</a>
+            </li>
+          </ol>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mt-5">
+            <div class="card">
+              <img src="" class="card-img-top listingImage" id="listingImage" alt="Listing image" />
+              <div class="card-body">
+                <h5 class="card-title" id="listingTitle"></h5>
+                <p class="card-text" id="listingDescription"></p>
+                <p class="card-text text-secondary">
+                  <span id="endingDate"></span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mt-5">
+            <div id="profileContainer" class="text-white">
+              <div class="d-flex profile-thumb">
+                <a href="#" class="text-decoration-none userProfileLink">
+                  <img
+                    id="profileAvatar"
+                    alt=""
+                    class="img-fluid img-thumbnail mb-2 profileAvatar"
+                    style="width: 100px; z-index: 10" />
+                  <h2 class="text-light mt-2" id="listingName"></h2>
+                </a>
+              </div>
+              <div class="mt-5">
+                <h2 class="text-light">Details</h2>
+                <hr class="table-group-divider link-light" />
+                <div class="d-flex justify-content-between text-light">
+                  <h4>Highest Bid: <span id="highestBid"></span></h4>
+                  <h4>Bids: <span id="bidsAmount"></span></h4>
+                </div>
+                <div class="d-flex justify-content-between text-light">
+                  <h4>Placed By: <span id="highestBidBy"></span></h4>
+                  <h4>Days left: <span id="daysLeft"></span></h4>
+                </div>
+                <form class="d-flex mt-3" id="placeBid">
+                  <input
+                    class="form-control me-2"
+                    id="enterAmount"
+                    placeholder="Enter Amount"
+                    type="number"
+                    aria-label="enterAmount" />
+                  <button class="btn btn-outline-light bidBtn" type="submit">Enter</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+
+    <footer class="text-center text-lg-start mt-5 footer-container">
+      <div class="text-center p-3">
+        <h4 class="text-light">Copyright© Auction site</h4>
+      </div>
+    </footer>
+
+    <!-- Create Listing Modal -->
+    <div
+      class="modal fade"
+      id="create-listing"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <form id="listingForm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Create Listing</h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div>
+                <label for="createTitle"></label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="createTitle"
+                  placeholder="Title"
+                  name="title"
+                  required />
+              </div>
+              <div>
+                <label for="createMedia"></label>
+                <input
+                  type="url"
+                  class="form-control"
+                  id="createMedia"
+                  placeholder="Media Gallery"
+                  name="media" />
+              </div>
+              <div>
+                <label for="createDescription"></label>
+                <textarea
+                  type="text"
+                  class="form-control"
+                  id="createDescription"
+                  placeholder="Description"
+                  name="description"
+                  rows="5"></textarea>
+              </div>
+              <div class="mt-3">
+                <label for="createDate">Auction should end:</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="createDate"
+                  placeholder="Date"
+                  name="date"
+                  required />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">
+                Close
+              </button>
+              <button type="submit" class="btn btn-dark">Publish Listing</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div
+      class="modal fade"
+      id="edit-profile"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <form id="editProfile">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Profile</h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div>
+                <label for="disabledEmail">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="disabledEmail"
+                  placeholder="Email"
+                  name="email"
+                  disabled />
+              </div>
+              <div class="mt-3">
+                <label for="disabledUsername">Username</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="disabledUsername"
+                  placeholder="Name"
+                  name="name"
+                  disabled />
+              </div>
+              <div class="mt-3">
+                <label for="editAvatar">Avatar</label>
+                <input
+                  type="url"
+                  class="form-control"
+                  id="editAvatar"
+                  name="avatar"
+                  placeholder="https://url.com/image.jpg"
+                  required />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">
+                Close
+              </button>
+              <button type="submit" class="btn btn-dark">Save Changes</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div
+      class="modal fade"
+      id="login-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <form id="loginForm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="mt-4">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="loginEmail"
+                  placeholder="example@stud.noroff.no"
+                  name="email"
+                  pattern="[\w\-.]+@(stud.)?noroff.no$"
+                  required />
+                <label for="loginEmail"><small>Must be a valid @stud.noroff email</small></label>
+              </div>
+              <div class="mt-4">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="loginPassword"
+                  placeholder="Password"
+                  name="password"
+                  minlength="8"
+                  autocomplete="current-password"
+                  required />
+                <label for="loginPassword">
+                  <small>Password must be atleast 8 characters</small></label
+                >
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                class="btn btn-outline-dark"
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#signup-modal">
+                Register
+              </button>
+              <button type="submit" class="btn btn-dark">Login</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div
+      class="modal fade"
+      id="signup-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <form id="registerForm" class="needs-validation" validate>
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Register</h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="mt-4">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="registerName"
+                  placeholder="Name"
+                  name="name"
+                  required />
+                <label for="registerName" class="form-label"
+                  ><small class="text-body-secondary"
+                    >No punctuation symbols apart from(_)</small
+                  ></label
+                >
+              </div>
+              <div class="mt-4">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="registerEmail"
+                  placeholder="example@stud.noroff.no"
+                  name="email"
+                  pattern="[\w\-.]+@(stud.)?noroff.no$"
+                  required />
+                <label for="registerEmail" class="form-label"
+                  ><small class="text-body-secondary"
+                    >Must be a valid @stud.noroff email</small
+                  ></label
+                >
+              </div>
+              <div class="mt-4">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="registerPassword"
+                  placeholder="Password"
+                  name="password"
+                  minlength="8"
+                  autocomplete="current-password"
+                  required />
+                <label for="registerPassword" class="form-label"
+                  ><small class="text-body-secondary"
+                    >Password must be atleast 8 characters</small
+                  ></label
+                >
+              </div>
+              <div class="mt-4">
+                <input
+                  type="url"
+                  class="form-control"
+                  id="registerAvatar"
+                  placeholder="Avatar"
+                  name="avatar" />
+                <label for="registerAvatar" class="form-label"
+                  ><small class="text-body-secondary">Optional</small></label
+                >
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">
+                Close
+              </button>
+              <button type="submit" class="btn btn-dark">Register</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
