@@ -13,7 +13,7 @@ export function registerFormListener() {
       registerUser(profile);
 
       if (profile) {
-        alert('User has been created'), setTimeout((location.href = '/'), 1000);
+        alert('User has been created');
       }
     });
   }

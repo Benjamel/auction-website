@@ -3,7 +3,7 @@ import { setLogin } from './api/handlers/login.mjs';
 import { logoutFormListener } from './api/auth/logout.mjs';
 import { createFormListener } from './api/handlers/createListing.mjs';
 import { renderSingleListing } from './api/handlers/renderListing.mjs';
-import * as templates from './templates/index.mjs';
+import { renderListings } from './templates/index.mjs';
 import { bidFormListener } from './api/handlers/placeBid.mjs';
 import { editProfileFormListener } from './api/handlers/editProfile.mjs';
 import { handleProfilePageLoad } from './templates/index.mjs';
@@ -17,7 +17,7 @@ switch (path) {
     setLogin();
     registerFormListener();
     logoutFormListener();
-    templates.renderListings();
+    renderListings();
     createFormListener();
     editProfileFormListener();
     handleVisibility();
@@ -39,5 +39,13 @@ switch (path) {
     createFormListener();
     editProfileFormListener();
     handleVisibility();
+    break;
+  case '/profiles/index.html':
+    logoutFormListener();
+    handleProfilePageLoad();
+    handleVisibility();
+    createFormListener();
+    editProfileFormListener();
+    renderSingleListing();
     break;
 }

@@ -8,19 +8,15 @@ export function searchForm() {
 
 async function handleSearch(event) {
   const searchValue = event.target.value.trim().toLowerCase();
-  console.log('Search value:', searchValue);
 
   const postDataList = await getListings();
   const searchResults = filterListings(postDataList, searchValue);
-  console.log('Search results:', searchResults);
 
   const listingContainer = document.querySelector('#allListings');
   listingContainer.innerHTML = '';
 
   if (searchResults.length > 0) {
-    const parent = document.createElement('div');
-    listTemplate(searchResults, parent);
-    listingContainer.appendChild(parent);
+    listTemplate(searchResults, listingContainer);
   } else {
     listingContainer.innerText = 'No results found.';
     listingContainer.style.color = 'white';

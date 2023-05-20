@@ -30,13 +30,23 @@ async function renderProfile(profile) {
 }
 
 export async function handleProfilePageLoad() {
-  const profile = load('profile');
-  const { name } = profile;
-  if (name) {
-    getProfile(name).then((profileData) => {
+  const searchParams = new URLSearchParams(window.location.search);
+  const userName = searchParams.get('userName');
+  if (userName) {
+    // Render another user's profile
+    getProfile(userName).then((profileData) => {
       renderProfile(profileData);
     });
   } else {
-    console.error('Failed to retrieve profile name from local storage.');
+    // Render your own profile based on local storage
+    const profile = load('profile');
+    const { name } = profile;
+    if (name) {
+      getProfile(name).then((profileData) => {
+        renderProfile(profileData);
+      });
+    } else {
+      console.error('Failed to retrieve profile name from local storage.');
+    }
   }
 }

@@ -54,7 +54,7 @@
                 </button>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" id="profileBtn">View Profile</a>
+                <a class="nav-link" id="profileBtn" href="/profile/index.html">View Profile</a>
               </li>
               <li class="nav-item">
                 <button
@@ -89,6 +89,13 @@
     </header>
     <main class="container-lg">
       <section class="container">
+        <div class="mt-1" aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a class="text-light opacity-75" href="/index.html">>Home</a>
+            </li>
+          </ol>
+        </div>
         <div class="col" id="profileContainer">
           <div class="text-white d-flex flex-row">
             <div class="mt-5 d-flex profile-thumb">
@@ -100,22 +107,6 @@
               <h2 class="text-light mt-5 ms-2" id="profileName">Profile Name</h2>
             </div>
           </div>
-          <div id="detailsContainer" class="d-flex justify-content-between mt-3">
-            <button
-              class="text-light bg-transparent btn btn-outline-light"
-              data-bs-toggle="modal"
-              data-bs-target="#edit-profile"
-              id="editProfileBtn">
-              Edit Profile
-            </button>
-            <button
-              class="text-light bg-transparent btn btn-outline-light"
-              data-bs-toggle="modal"
-              data-bs-target="#create-listing">
-              New Listing
-            </button>
-          </div>
-          <!-- <div class="table-group-divider text-light mt-5"></div> -->
           <div class="mt-5">
             <h2 class="text-light">Details</h2>
             <div class="d-flex justify-content-between">
@@ -129,7 +120,7 @@
               </div>
             </div>
             <div class="text-light mt-5">
-              <h2>My listings:</h2>
+              <h2>Listings:</h2>
             </div>
           </div>
           <div class="row d-flex justify-content-center" id="listingContainer"></div>

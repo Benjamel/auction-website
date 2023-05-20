@@ -10,14 +10,13 @@ export async function getProfile(name) {
     const response = await authFetch(getProfileURL);
     if (response.ok) {
       const responseBody = await response.json();
-
       return responseBody;
     } else {
-      console.error('failed to fetch profile:', response.statusText);
+      console.error('Failed to fetch profile:', response.statusText);
       return null;
     }
   } catch (error) {
-    console.log('An error occurred while fetching profile', error);
+    console.log('An error occurred while fetching profile:', error);
     return null;
   }
 }
@@ -43,5 +42,6 @@ export async function getProfileListings(name) {
 export async function getProfiles() {
   const getProfilesURL = `${API_URL}${action}?_listings=true`;
   const response = await authFetch(getProfilesURL);
-  return await response.json();
+  const profiles = await response.json();
+  return profiles;
 }

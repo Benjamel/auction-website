@@ -1,7 +1,6 @@
-import { load } from '../storage/index.mjs';
+import { isLoggedIn } from '../auth/state.mjs';
 
 export function handleVisibility() {
-  const isLoggedIn = load('profile') !== null;
   const loginBtn = document.getElementById('loginBtn');
   const logoutBtn = document.getElementById('logoutBtn');
   const viewProfileLink = document.getElementById('profileBtn');
@@ -9,7 +8,7 @@ export function handleVisibility() {
   const editProfileBtn = document.querySelector('[data-bs-target="#edit-profile"]');
   const hr = document.querySelector('hr');
 
-  if (isLoggedIn) {
+  if (isLoggedIn()) {
     loginBtn.classList.add('d-none');
     logoutBtn.parentElement.style.display = 'block';
     viewProfileLink.parentElement.style.display = 'block';
