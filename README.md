@@ -4,7 +4,7 @@
 
 ## Description
 
-Write description
+Tasked with creating an auction page using noroff's own API. The user must be able to register with a valid @stud.noroff mail adress. The user must be able to search through active listings, create a new listing, bid on existing listings that are not your own. To name a few. 
 
 ## Built With
 
